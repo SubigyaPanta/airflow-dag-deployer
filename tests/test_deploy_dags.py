@@ -1,7 +1,7 @@
 import unittest
 import os
-import glob
-from src.deploy_dag import Deployer
+
+from src.dagdeployer.deploy_dag import Deployer
 
 
 class DeployTest(unittest.TestCase):
@@ -37,7 +37,7 @@ class DeployTest(unittest.TestCase):
         os.remove(file_to_check)
 
     def test_zip_deploy_commandline(self):
-        os.system(f'python3 ../src/deploy_dag.py --project={self.project_name} --source={self.dags_dir} --destination={self.airflow_home} --method=zip')
+        os.system(f'python3 ../src/dagdeployer/deploy_dag.py --project={self.project_name} --source={self.dags_dir} --destination={self.airflow_home} --method=zip')
 
         file_to_check = f'{self.airflow_home}/{self.project_name}.zip'
         exists = os.path.isfile(file_to_check)

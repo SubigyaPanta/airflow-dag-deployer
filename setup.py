@@ -5,7 +5,7 @@ with open('README.md', 'r') as handle:
 
 setuptools.setup(
     name='airflow-dag-deployer',
-    version='0.1',
+    version='0.5',
     author='Subigya Jyoti Panta',
     author_email='subigyapanta@gmail.com',
     description="To deploy projects dags to airflow dag directory",
@@ -33,7 +33,7 @@ setuptools.setup(
         },
     entry_points = {
         'console_scripts': [
-            'deploydag = deploy_dag',
+            'deploydag = dagdeployer.deploy_dag:run',
         ],
     }
 )

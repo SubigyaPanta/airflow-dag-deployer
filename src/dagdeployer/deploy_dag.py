@@ -51,7 +51,7 @@ class Deployer:
             shutil.copy(src, dest)
 
 
-if __name__ == '__main__':
+def run():
     parser = argparse.ArgumentParser(description="Deploys dags from deg directory to a packaged dag in "
                                                  "airflow dag folder with a command line interface.")
     parser.add_argument('--project', type=str, help="Project name to keep inside airflow dag directory")
@@ -91,3 +91,7 @@ if __name__ == '__main__':
         print(str(ae))
     except ValueError as ve:
         print(str(ve))
+
+
+if __name__ == '__main__':
+    run()
