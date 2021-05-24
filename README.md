@@ -13,3 +13,23 @@ deploydag --project=<project_name> --source=<dags_dir> --destination=<airflow_ho
 ```
 deploydag --project=<project_name> --source=<dags_dir> --destination=<airflow_home> --method=file
 ```
+
+### Deploying dags with config file for different environments
+
+#### Set up of different deployment environment (dev/test/prod)
+Have a `deploydag.json` (or any filename with json setting) file like this:
+```json
+{
+  "dev": {
+    "project": "testproject",
+    "source": "dags",
+    "destination": "airflowhome",
+    "method": "zip"
+  }
+}
+```
+
+Run command like this:
+```
+deploydag --config=deploydag.json --env=dev
+```

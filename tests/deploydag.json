@@ -1,0 +1,8 @@
+{
+  "dev": {
+    "project": "testproject",
+    "source": "dags",
+    "destination": "airflowhome",
+    "method": "zip"
+  }
+}

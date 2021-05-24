@@ -9,7 +9,7 @@ class DeployTest(unittest.TestCase):
     def setUp(self) -> None:
         self.airflow_home = 'airflowhome'
         self.dags_dir = 'dags'
-        self.project_name = 'deepboard'
+        self.project_name = 'testproject'
 
         # clear everything in airflow home directory
         # files = glob.glob(self.airflow_home)
@@ -38,6 +38,15 @@ class DeployTest(unittest.TestCase):
 
     def test_zip_deploy_commandline(self):
         os.system(f'python3 ../src/dagdeployer/deploy_dag.py --project={self.project_name} --source={self.dags_dir} --destination={self.airflow_home} --method=zip')
+
+        file_to_check = f'{self.airflow_home}/{self.project_name}.zip'
+        exists = os.path.isfile(file_to_check)
+        self.assertTrue(exists)
+
+        os.remove(file_to_check)
+
+    def test_zip_deploy_commandline_with_config(self):
+        os.system(f'python3 ../src/dagdeployer/deploy_dag.py --config=deploydag.json --env=dev')
 
         file_to_check = f'{self.airflow_home}/{self.project_name}.zip'
         exists = os.path.isfile(file_to_check)
